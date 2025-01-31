@@ -37,4 +37,6 @@
     - name: Setup MySQL root password
       ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
       when: mysql_info.failed is true
-       
+    
+    - name: Execute the connect command from command
+      ansible.builtin.command: mysql -h mysql.laven.cloud -u root -p"{{ mysql_root_password }}"
