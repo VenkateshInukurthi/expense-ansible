@@ -1,6 +1,9 @@
 - name: MySQL server configuration
   hosts: mysql
   become: yes
+  vars:
+    mysql_root_password: ExpenseApp@1
+    login_host: mysql.laven.cloud
   tasks:
     - name: Install MySQL server
       ansible.builtin.package:
@@ -12,3 +15,9 @@
         name: mysqld
         state: started
         enabled: yes
+
+    - name: Connect to MySQL server
+      community.mysql.mysql_info:
+        login_host: "{{ login_host }}"
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
