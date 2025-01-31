@@ -5,10 +5,11 @@
     mysql_root_password: ExpenseApp@1
     login_host: mysql.laven.cloud
   tasks:
-    - name: Install PyMySQL module using pip
+    - name: Install PyMySQL and cryptography packages using pip
       ansible.builtin.pip:
         name:
           - PyMySQL
+          - cryptography
         executable: pip3.9
 
     - name: Install MySQL server
