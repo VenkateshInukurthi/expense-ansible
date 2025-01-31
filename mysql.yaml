@@ -18,9 +18,10 @@
       
     - name: Install PyMySQL module using pip
       ansible.builtin.pip:
-        - PyMySQL
+        name:
+          - PyMySQL
       executable: pip3.9
-      
+
     - name: Connect to MySQL server
       community.mysql.mysql_info:
         login_host: "{{ login_host }}"
