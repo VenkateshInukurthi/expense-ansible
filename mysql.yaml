@@ -15,7 +15,12 @@
         name: mysqld
         state: started
         enabled: yes
-
+      
+    - name: Install PyMySQL module using pip
+      ansible.builtin.pip:
+        - PyMySQL
+      executable: pip3.9
+      
     - name: Connect to MySQL server
       community.mysql.mysql_info:
         login_host: "{{ login_host }}"
@@ -23,12 +28,7 @@
         login_password: "{{ mysql_root_password }}"
       ignore_errors: yes
       register: mysql_info
-      
-    - name: Install PyMySQL module using pip
-      ansible.builtin.pip:
-        - PyMySQL
-      executable: pip3.9
-
+    
     - name: Print MySQL information
       ansible.builtin.debug:
         msg: "{{ mysql_info }}"
