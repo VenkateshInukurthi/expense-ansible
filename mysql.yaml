@@ -23,9 +23,14 @@
         login_password: "{{ mysql_root_password }}"
       ignore_errors: yes
       register: mysql_info
+      
+    - name: Install PyMySQL module using pip
+      ansible.builtin.pip:
+        - PyMySQL
+      executable: pip3.9
 
     - name: Print MySQL information
       ansible.builtin.debug:
         msg: "{{ mysql_info }}"
 
-    
+       
