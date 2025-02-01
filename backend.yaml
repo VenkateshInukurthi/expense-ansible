@@ -2,17 +2,16 @@
   hosts: backend
   become: yes
   tasks:
-    - name: Disable default node JS
-      ansbile.builtin.command: dnf module disable nodejs -y
-      
-    - name: Enable nodejs 20
-      ansible.builtin.command: dnf module enable nodejs:20 -y
-
-    - name: Install nodejs
-      ansible.builtin.package:
-        name: nodejs
-        state: present
-
-    - name: Add expense user
-      ansible.builtin.user:
-        name: expense
+  - name: Disable default node JS
+    ansbile.builtin.command: dnf module disable nodejs -y
+    
+  - name: Enable nodejs 20
+    ansible.builtin.command: dnf module enable nodejs:20 -y
+    
+  - name: Install nodejs
+    ansible.builtin.package:
+      name: nodejs
+      state: present
+  - name: Add expense user
+    ansible.builtin.user:
+      name: expense
