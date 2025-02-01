@@ -49,8 +49,9 @@
       src: backend.service
       dest: /etc/systemd/system/backend.service
 
-  - name: Install dependent packages for mysql
+  - name: ansible to install pymysql and cryptography
     ansible.builtin.pip:
+      name:
       - PyMySQL
       - cryptography
       executable: pip3.9
